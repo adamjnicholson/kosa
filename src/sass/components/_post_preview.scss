@@ -1,0 +1,28 @@
+.post-preview{
+    padding-bottom: 2rem;
+    border-bottom: 1px solid $black;
+    &:last-of-type {
+        border-bottom: none;
+    }
+    + .post-preview {
+        margin-top: 2rem;
+    }
+    .post-thumb {
+        margin-bottom: 2rem;
+        img {
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+    .read-more {
+        margin-top: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .search-result {
+        .post-thumb {
+            margin-bottom: 0;
+        }
+    }
+}

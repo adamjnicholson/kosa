@@ -1,0 +1,98 @@
+header .search-container {
+    &.active {
+        .search-icon-container {
+            .icon-search {
+                opacity: 0;
+            }
+            .icon-close {
+                opacity: 1;
+            }
+        }
+        form.search-form {
+            transform: translateY(100%);
+            opacity: 1;
+            transition: transform .3s ease-out;
+            &:before {
+                transform: translateY(-100%);
+            }
+        }
+    }
+    .search-icon-container {
+        position: relative;
+        .icon {
+            transition: $animate;
+        }
+        .icon-close {
+            opacity: 0;
+        }
+    }
+    form.search-form {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        transition: transform .3s ease-out, opacity .1s ease .4s;
+        opacity: 0;
+        transform: translateY(-3px);
+        &:before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            bottom: -1px;
+            left: -1px;
+            background-color: $white;
+            z-index: 20;
+            transition: $animate;
+        }
+    }
+}
+
+form.search-form {
+    display: flex;
+    border: 1px solid $black;
+    label {
+        flex: 1;
+    }
+    .search-field {
+        width: 100%;
+        padding: .75rem 1.5rem;
+        border: none;
+        box-sizing: border-box;
+    }
+    .search-button-container {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: 1.25rem;
+        border-left: 1px solid $black;
+        background-color: $white;
+        cursor: pointer;
+        transition: $animate;
+        &:hover {
+            background-color: $accent-colour;
+            border-left-color: $white;
+            .icon svg {
+                fill: $white;
+            }
+        }
+        .icon {
+            z-index: 2;
+            svg {
+                fill: $black;
+                @include absolute-center;
+            }
+        }
+
+        input[type="submit"] {
+            position: absolute;
+            border-radius: 0;
+            padding: 0;
+            border: none;
+            width: 100%;
+            z-index: 2;
+            background-color: $clear;
+        }
+    }
+}

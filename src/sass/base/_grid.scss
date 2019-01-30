@@ -1,0 +1,48 @@
+.container {
+    position: relative;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    &.lg { max-width: 782px; }
+    // &.md { max-width: 900px; }
+    &.sm { max-width: 650px; }
+}
+
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -1rem;
+    margin-left: -1rem;
+}
+
+.col {
+    position: relative;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+@mixin grid($size) {
+    @for $i from 1 through 12 {
+        .col-#{$size}-#{$i} {
+            $width: ($i / 12 ) * 100%;
+            flex: 0 0 $width;
+            max-width: $width;
+        }
+    }
+}
+
+@include grid(m);
+
+@media (min-width: 768px) {
+    @include grid(t);
+}
+
+@media (min-width: 1024px) {
+    @include grid(d);
+}
+

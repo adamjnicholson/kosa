@@ -1,0 +1,84 @@
+.absolute-center {
+  @include absolute-center;
+}
+
+.absolute-cover {
+  @include  absolute-cover;
+}
+
+a.no-link {
+  font-weight: normal;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: .5rem;
+  }
+}
+
+.icon {
+  position: relative;
+  display: flex;
+  pointer-events: none;
+  &.absolute-center {
+    position: absolute;
+  }
+	svg {
+		width: 1em;
+    height: 1em;
+    fill: $black;
+	}
+
+	&.icon-google-plus svg {
+		width: 2em;
+  }
+  &.icon-cart svg {
+    transform: translateX(-3px);
+  }
+}
+
+.align-center {text-align: center}
+.align-left {text-align: left}
+.align-right {text-align: right}
+
+ul.no-list,
+.no-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.horizontal {
+  display: flex;
+  > * + * {
+    margin-left: 1em;
+  }
+}
+
+.small {
+  font-size: .875rem;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+.screen-reader-text {
+  clip: rect(1px,1px,1px,1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute!important;
+  width: 1px;
+  word-wrap: normal!important;
+}
+
+
+
+
+@media (min-width: 1600px) {
+  .button,
+  input[type="submit"] {
+    font-size: 1rem;
+  }
+}

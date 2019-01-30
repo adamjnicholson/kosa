@@ -1,0 +1,14 @@
+body.admin-bar header {
+    top: 46px;
+}
+
+#wpadminbar a:before {
+    width: auto;
+    transform: scaleX(1);
+  }
+
+@media (min-width: 783px) {
+    body.admin-bar header {
+        top: 32px;
+    }
+}
