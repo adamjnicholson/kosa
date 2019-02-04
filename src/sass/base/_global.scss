@@ -29,13 +29,11 @@ a.no-link {
 		width: 1em;
     height: 1em;
     fill: $black;
+    transition: $animate;
 	}
 
 	&.icon-google-plus svg {
 		width: 2em;
-  }
-  &.icon-cart svg {
-    transform: translateX(-3px);
   }
 }
 
@@ -47,7 +45,20 @@ ul.no-list,
 .no-list ul {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+  padding: 0;
+  li:before {
+    height: 0;
+    width: 0;
+    margin: 0;
+  }
+}
+
+img {
+  + .caption {
+    font-size: .9rem;
+    color: $dark-gray;
+    margin-top: .5rem;
+  }
 }
 
 .horizontal {
@@ -64,21 +75,74 @@ ul.no-list,
 .caps {
   text-transform: uppercase;
 }
-.screen-reader-text {
-  clip: rect(1px,1px,1px,1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute!important;
-  width: 1px;
-  word-wrap: normal!important;
+
+.circle {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $accent-colour;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  color: $white;
+  text-align: center;
 }
 
+.kosa-colours {
+  margin-bottom: 2rem;
+  .row {
+    align-items: center;
+    flex-direction: column;
+  }
+  .image-container {
+    text-align: center;
+    padding: 1rem;
+  } 
+}
 
+@media (min-width: 480px) {
+    .kosa-colours {
+      margin-bottom: 2rem;
+      > *:first-child {
+        flex-basis: 100%;
+      }
+      .row {
+        margin-left: -.5rem;
+        margin-right: -.5rem;
+        flex-flow: row wrap;
+        justify-content: center;
+      }
+      .image-container {
+        padding: 0 .5rem 1rem .5rem;
+        + .image-container{
+          margin-top: 0;
+        }
+      } 
+    }
+   
+}
 
-
-@media (min-width: 1600px) {
-  .button,
-  input[type="submit"] {
-    font-size: 1rem;
+@media (min-width: 768px) {
+  img {
+    &.full-width {
+      max-width: none;
+      width: 100%;
+    }
+  }
+  .kosa-colours {
+    margin-bottom: 0;
+    .row {
+      justify-content: flex-start;
+    }
+    .image-container {
+      text-align: center;
+    }
   }
 }
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 @import 'helpers/_mixins';
 
 @import 'vendors/_normalise';
+@import 'vendors/_slick';
 
 @import 'base/_fonts';
 @import 'base/_defaults';
@@ -13,11 +14,11 @@
 @import 'components/_search_form';
 @import 'components/_banner';
 @import 'components/_post_preview';
-
-
+@import 'components/_sizes_slider';
 
 @import 'layout/_header';
 @import 'layout/_footer';
+@import 'layout/_home';
 @import 'layout/_main';
 @import 'layout/_responsive';
 

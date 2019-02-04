@@ -33,3 +33,30 @@
     return $html;
   }
   add_shortcode('phone', 'phoneShortcode');
+
+  function cirlcesShortcode($atts){
+    $html = '';
+    $words = explode(' ', $atts['content']);
+
+    if (!empty($words)) {
+      $html .= '<span class="circles">';
+        foreach($words as $word) {
+          $html .= '<span class="circle">' . $word . '</span>';
+        }
+      $html .= '</span>';
+    }
+    return $html;
+  }
+  add_shortcode('circles', 'cirlcesShortcode');
+
+  function coloursShortcode($atts){
+    $html = genColours('kosa-colours');
+    return $html;
+  }
+  add_shortcode('colours', 'coloursShortcode');
+
+  function sizeChartShortcode($atts){
+    $html = genSizeChart('kosa-colours');
+    return $html;
+  }
+  add_shortcode('size_chart', 'sizeChartShortcode');

@@ -5,12 +5,10 @@
     padding-left: 1rem;
     margin-right: auto;
     margin-left: auto;
-    &.lg { max-width: 782px; }
-    // &.md { max-width: 900px; }
+    &.lg { max-width: 1440px; }
+    &.md { max-width: 1200px; }
     &.sm { max-width: 650px; }
 }
-
-
 
 .row {
     display: flex;
@@ -26,6 +24,17 @@
     padding-left: 1rem;
 }
 
+section.page-section + section.page-section {
+    margin-top: 2rem;
+    &.big-gap {
+        margin-top: 3rem;
+    }
+    &.no-gap {
+        margin-top: 0;
+    }
+}
+
+
 @mixin grid($size) {
     @for $i from 1 through 12 {
         .col-#{$size}-#{$i} {
@@ -36,13 +45,29 @@
     }
 }
 
-@include grid(m);
+@include grid(xs);
+
+@media (min-width: 550px) {
+    @include grid(sm);
+    section.page-section + section.page-section {
+        margin-top: 4rem;
+    }
+}
 
 @media (min-width: 768px) {
-    @include grid(t);
+    @include grid(md);
 }
 
 @media (min-width: 1024px) {
-    @include grid(d);
+    @include grid(lg);
+    section.page-section + section.page-section {
+        margin-top: 6rem;
+        &.small-gap {
+            margin-top: 4rem;
+        }
+        &.big-gap {
+            margin-top: 8rem;
+        }
+    }
 }
 

@@ -4,25 +4,27 @@
  */
 ?>
 
-<?php $width = ''; ?>
+<?php 
+  $banner = get_field('banner');
+  $images = get_field('images');
+?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('post-preview'); ?>>
-  <div class="row">
-    <?php if (has_post_thumbnail()): $width = 'col-t-9'; ?>
-      <div class="post-thumb col col-m-12 col-t-3">
-        <?php echo get_the_post_thumbnail(get_the_ID(), 'post-preview'); ?>
-      </div>
-    <?php endif; ?>
-    <div class="post-desc col col-m-12 <?php echo $width; ?>">
-      <h2><a href="<?php echo get_permalink();?>"><?php the_title(); ?></a></h2>
-
-      <?php 
-        echo genExcerpt(get_the_content());
-      ?>
-
-      <!-- excerpt -->
-      <a href="<?php echo get_permalink();?>" class="button read-more">Read More</a>
-    </div>
-   
+  <div class="date"><?php echo get_the_date('j/n/y'); ?></div>
+  <h2><?php the_title(); ?></h2>
+  <?php if (!empty($banner)) : ?>
+    <div class="banner"><?php echo genImageTag($banner); ?></div>
+  <?php endif; ?>
+  <div class="post-content">
+    <?php the_content(); ?>
   </div>
+  <?php if (!empty($images)) : ?>
+    <div class="image-row">
+      <?php 
+      foreach ($images as $img) {
+        echo genImageTag($img);
+      }
+      ?>
+    </div>
+  <?php endif; ?>   
 </article>

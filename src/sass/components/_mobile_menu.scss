@@ -1,64 +1,83 @@
 #hamburger {
-    position: relative;
-    padding: 1.25rem;
-    cursor: pointer;
-    &.active {
-        .icon-bars {
-            opacity: 0;;
-        }
-        .icon-close {
-            opacity: 1;
-        }
-    }
-    .icon {
-        @include absolute-center;
-        transition: $animate;
+  position: relative;
+  padding: 1.25rem;
+  cursor: pointer;
+  background-color: $accent-colour;
+  svg {
+    fill: $white;
+  }
+  &.active {
+    .icon-bars {
+      opacity: 0;;
     }
     .icon-close {
-        opacity: 0;
+      opacity: 1;
     }
+  }
+  .icon {
+    @include absolute-center;
+    transition: $animate;
+  }
+  .icon-close {
+    opacity: 0;
+  }
 }
 
 #mobile-menu-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 100%;
-    z-index: 920;
-    width: 300px;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transform: translateX(-100%);
-    transition: transform .3s ease-out;
-    background-color: $white;
-    border-right: 1px solid $black;
-    &.active {
-        transform: translateX(0);
-    }
-    #mobile-menu {
-      flex: 1;
-      li {
-          padding: .75rem 1.5rem;
-          + li {
-            border-top: 1px solid rgba($black, .2);
-          }
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  z-index: 920;
+  width: 300px;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transform: translateX(-100%);
+  transition: transform .3s ease-out;
+  background-color: $white;
+  border-right: 1px solid rgba($black, .2);
+  &.active {
+    transform: translateX(0);
+  }
+  #mobile-menu {
+    flex: 1;
+    margin-top: 1rem;
+    li {
+      + li {
+        border-top: 1px solid rgba($black, .2);
+        margin-top: 0;
       }
+      &.current-menu-item a {
+        background-color: $accent-colour;
+        color: $white;
+      }
+    } 
+    a {
+      padding: .75rem 1.5rem;
+      display: block;
+      width: 100%;
     }
-    form.search-form {
-        border-left: none;
-        border-right: none;
-    }
-    .social-menu {
-        margin: 2rem 0;
-        justify-content: center;
-    }
+  }
 
+  form.search-form {
+    border-left: none;
+    border-right: none;
+  }
+  .social-menu {
+    margin: 2rem 0;
+    justify-content: center;
+  }
 }
 
-@media (min-width: 768px) {
-    #hamburger {
-        display: none;
-    }
+.menu a {
+  font-family: $heading-font;
+  color: $dark-gray;
+  display: block;
+  &:hover {
+    background-color: $accent-colour;
+    color: $white;
+  }
 }
+

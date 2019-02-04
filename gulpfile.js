@@ -66,6 +66,14 @@ gulp.task('js', () => {
    .pipe(gulp.dest('./dist/js'))
 });
 
+gulp.task('js-single', () => {
+  return gulp.src([
+    './src/js/masonry.pkgd.min.js',
+    './src/js/slick.min.js'
+  ])
+  .pipe(gulp.dest('./dist/js'))
+});
+
 gulp.task('images', () => {
   return gulp.src('./src/images/**/*')
     .pipe(plumber({errorHandler: onError}))
@@ -79,10 +87,10 @@ gulp.task('watch', function(){
     proxy: devURL
   })
   gulp.watch('./src/sass/**/*.scss', gulp.series(['sass', reload]));
-  gulp.watch('./src/js/*.js', gulp.series(['js', reload]));
+  gulp.watch('./src/js/*.js', gulp.series(['js', 'js-single', reload]));
   gulp.watch('./src/images/src/*', gulp.series(['images', reload]));
 });
 
 
-gulp.task('default', gulp.series(['sass', 'js', 'images', 'watch']));
+gulp.task('default', gulp.series(['sass', 'js', 'js-single', 'images', 'watch']));
 

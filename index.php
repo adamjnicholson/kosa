@@ -4,22 +4,16 @@
  */
 
 get_header(); ?>
+<section id="search-results" class="page-section container sm">
+  <?php if (have_posts()) : ?>
+      <?php while (have_posts()) : the_post(); ?>
+        <?php get_template_part('template-parts/content'); ?>
+      <?php endwhile; ?>
+  <?php else : ?>
+    <?php get_template_part('template-parts/content', 'none'); ?>
+  <?php endif; ?>
+</section>
 
-<?php 
-  global $wp_query;
-  $classes =  $wp_query->found_posts > 0 ? 'md' : 'sm no-results';
-?>
-
-    <section id="search-results" class="container <?php echo $classes; ?>">
-        <?php 
-            if (have_posts()) {
-                while (have_posts()) : the_post();
-                    get_template_part('template-parts/content');
-                endwhile;
-            } else {
-                get_template_part('template-parts', 'content-none');
-            }
-        ?>
-    </section>
+   
 
 <?php get_footer(); ?>

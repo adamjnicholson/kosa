@@ -5,8 +5,8 @@
  * Displays all of the head element and everything up until the "site-content" div.
  *
  */
-$headerBanner = get_field('header_banner', 'options');
-
+$headerBanner = get_field('page_banner');
+$headerBanner = empty($headerBanner) ? get_field('site_banner', 'options') : $headerBanner;
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,29 +19,34 @@ $headerBanner = get_field('header_banner', 'options');
 
 
   <body <?php body_class(); ?>>
-
-    <div id="hamburger">
-      <?php echo genSvg('icon-bars', ['absolute-center']); ?>
-      <?php echo genSvg('icon-close', ['absolute-center']); ?>
+    <div class="fixed-header">
+      <?php genSiteLogo('small', false, ''); ?>
+      <div id="hamburger">
+        <?php echo genSvg('icon-bars', ['absolute-center']); ?>
+        <?php echo genSvg('icon-close', ['absolute-center']); ?>
+      </div>
     </div>
-    
     <nav id="mobile-menu-container">
       <?php wp_nav_menu(['theme_location' => 'mobile', 'container' => false, 'menu_id' => 'mobile-menu', 'menu_class' => 'no-list menu']); ?>
-      <?php get_search_form(); ?>
     </nav>
 
     <header>
       <div class="container lg">
-        <?php if (!empty($headerBanner)) : ?>
-          <div class="header-banner">
-            <?php echo genImageTag($headerBanner); ?>
-          </div>
-        <?php endif; ?>
+        <?php genSiteLogo('header', false); ?>
         <?php wp_nav_menu(['theme_location' => 'main', 'container' => 'nav',  'container_id' => 'main-menu', 'menu_class' => 'no-list menu horizontal']); ?>
-      </div> <!--Container-->
+        
+      </div>
     </header>
     <main>
-    
+      <?php if (!empty($headerBanner)) : ?>
+        <div id="page-banner">
+          <?php 
+          foreach ($headerBanner as $banner) {
+            echo genImageTag($banner);
+          }
+          ?>
+        </div>
+      <?php endif; ?>
     
 
     

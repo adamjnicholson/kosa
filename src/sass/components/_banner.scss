@@ -1,7 +1,14 @@
 #page-banner {
-    margin-bottom: 4rem;
-    img {
-        max-width: none;
-        width: 100%;
-    }
+  margin-top: 60px;
+  margin-bottom: 4rem;
+  img {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 930px) {
+  #page-banner {
+    margin-top: 0;
+  }
 }

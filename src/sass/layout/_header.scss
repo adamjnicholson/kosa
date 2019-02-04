@@ -1,69 +1,86 @@
-$mobileHeight: 47px;
-$tabletHeight: 94px;
-
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: $white;
+  height: 60px;
+  padding: .5rem .5rem .5rem 1rem;
+  border-bottom: 1px solid $light-gray;
+  z-index: 950;
+  .site-logo {
+    img{
+      max-height: 45px;
+      width: auto;
+    }
+  } 
+}
 
 header {
+  display: none;
     .container {
-        display: flex;
-        flex-direction: column;
+      display: flex;
     }
     .site-logo {
-        margin-bottom: 0;
-        padding: .5rem 0;
-        width: 95px;
-        transition: $animate;
-    }
-    nav#main-menu,
-    .icon-menu {
-        display: none;
-        align-items: center;
-    }
-    .icon-menu {
-        margin-left: auto;
-        .search-container {
-            cursor: pointer;
-        }
+      margin-bottom: 0;
+      padding: .5rem 0;
+      width: 95px;
+      transition: $animate;
     }
 }
 
 main {
-    &.no-banner {
-        padding-top: 4rem;
-    }
+  &.no-banner {
+    padding-top: 4rem;
+  }
 }
 
-@media (min-width: 550px) {
-    header {
-        .container{
-            justify-content: flex-start
-        }
-        .site-logo {
-            margin-right: 1.5rem;
-        }
-        nav#main-menu,
-        .icon-menu {
-            display: flex;
-        }
-        #hamburger {
-            display: none;
-        }
+
+
+@media (min-width: 980px) {
+  .fixed-header {
+    display: none;
+    #hamburger {
+      display: none;
     }
+  }
+  header {
+    display: block;
+    .container {
+      align-items: center;
+      height: 50px;
+    }
+    .site-logo {
+      align-self: flex-start;
+      margin-right: 1rem;
+    }
+  }
 }
 
-@media (min-width: 768px) {
-    header {
-        &.small-header {
-            height: 47px;
-            .site-logo {
-                width: 95px;
-                padding: .5rem 0;
-            }
-        }
-        .site-logo {
-            padding: 1.5rem;
-            margin-right: 2rem;
-            width: 185px;
-        }
+@media (min-width: 1024px) {
+  header {
+    .container {
+      height: 55px;
     }
+    .site-logo {
+      margin-right: 1.5rem;
+      width: 120px;
+    }
+  }
+}
 
+
+@media (min-width: 1200px) {
+  header {
+    .container {
+      height: 85px;
+    }
+    .site-logo {
+      margin-right: 2rem;
+      width: auto;
+    }
+  }
 }

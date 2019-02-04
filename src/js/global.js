@@ -1,27 +1,32 @@
 {
-    const searchEls = {
-        searchContainer: document.querySelector('.icon-menu .search-container'),
-        searchIcon: document.querySelector('.icon-menu .search-icon-container'),
-        searchInput: document.querySelector('.icon-menu form.search-form .search-field')
+  const initMasonry = () => {
+    const grid = document.querySelector('#attributes > .row');
+    if (grid !== null) {
+      const msnry = new Masonry(grid, {
+        itemSelector: '.attribute',
+        columnWidth: '.attribute',
+        percentPosition: true
+      });
     }
+  }
 
-    const toggleSiteSearch = e => {
-        searchEls.searchContainer.classList.toggle('active');
-        if ( searchEls.searchContainer.classList.contains('active')) {
-            searchEls.searchInput.focus()
-        }
+  const slickInit = () => {
+    if (window.jQuery){
+      const $slider = jQuery('.sizes-container');
+      if ($slider.length) {
+        $slider.slick({
+          infinite: false,
+          nextArrow: `<button type="button" class="slick-next">${localize.nextArrow}</button>`,
+          prevArrow: `<button type="button" class="slick-prev">${localize.prevArrow}</button>`,
+        })
+      }
     }
-
-    const closeSiteSearch = () => {
-        if (window.innerWidth < 768) {
-            searchEls.searchContainer.classList.remove('active');
-        }
-    }
+  }
     
-    const init = () => {
-        searchEls.searchIcon.addEventListener('click', toggleSiteSearch);
-        window.addEventListener('resize', closeSiteSearch);
-    }
+  const init = () => {
+    initMasonry();
+    slickInit();
+  }
 
     init();
 }
