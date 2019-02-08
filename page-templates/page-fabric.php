@@ -18,7 +18,7 @@ $attributes = get_field('attributes');
   <section id="attributes" class="container md">
     <div class="row">
       <?php 
-      foreach ($attributes as $attr) :
+      foreach ($attributes as $key => $attr) :
         $heading = !empty($attr['heading']) ? '<h3>' . $attr['heading'] . '</h3>' : '';
         $subheading = !empty($attr['sub_heading']) ? '<p class="subheading">' . $attr['sub_heading'] . '</p>' : '';
         $description = !empty($attr['description']) ? '<div class="description">' . $attr['description'] . '</div>' : '';
@@ -30,7 +30,7 @@ $attributes = get_field('attributes');
             echo $description;
             if (!empty($attr['images'])) {
               foreach ($attr['images'] as $img) {
-                echo genImageTag($img);
+                echo '<a href="' . $img['url'] . '" data-lightbox="' . $key . '">' . genImageTag($img, 'medium_large') . '</a>';
               }
             }
           ?>
