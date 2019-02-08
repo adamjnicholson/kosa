@@ -5,9 +5,6 @@
 
 get_header();
 
-$bannerCutout = get_field('banner_cutout');
-$wearIt = get_field('wear_it');
-
 $intro = get_field('intro');
 $width = 'col col-xs-12 ';
 $width .= count($intro) > 3 ? 'col-sm-6 col-lg-3' : 'col-md-4';
@@ -21,20 +18,7 @@ $rightCol = get_field('right_col');
 ?>
 
 
-<?php if (!empty($bannerCutout)) : ?>
-  <section id="banner-cutout" class="page-section">
-    <div class="cutout">
-      <?php echo $bannerCutout; ?>
-    </div>
-    <?php if (!empty($wearIt)) : ?>
-        <ul class="wear-it no-list">
-          <?php foreach ($wearIt as $content) : ?>
-            <li class="h3"><?php echo $content['content']; ?></li>
-          <?php endforeach; ?>
-        </ul>
-    <?php endif; ?>
-  </section>
-<?php endif; ?>
+
 
 <?php if (have_posts()) : ?>
   <section id="entry-content" class="page-section container sm">

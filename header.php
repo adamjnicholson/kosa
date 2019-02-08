@@ -7,6 +7,9 @@
  */
 $headerBanner = get_field('page_banner');
 $headerBanner = empty($headerBanner) ? get_field('site_banner', 'options') : $headerBanner;
+$bannerCutout = get_field('banner_cutout');
+$wearIt = get_field('wear_it');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,13 +42,29 @@ $headerBanner = empty($headerBanner) ? get_field('site_banner', 'options') : $he
     </header>
     <main>
       <?php if (!empty($headerBanner)) : ?>
-        <div id="page-banner">
+        <section id="page-banner" class="page-section">
+          <div class="page-banner-inner">
           <?php 
-          foreach ($headerBanner as $banner) {
-            echo genImageTag($banner);
-          }
+            foreach ($headerBanner as $banner) {
+              echo genImageTag($banner);
+            }
           ?>
-        </div>
+          </div>
+          <?php if (!empty($bannerCutout)) : ?>
+          <div id="banner-cutout">
+            <div class="cutout">
+              <?php echo $bannerCutout; ?>
+            </div>
+            <?php if (!empty($wearIt)) : ?>
+              <ul class="wear-it no-list">
+                <?php foreach ($wearIt as $content) : ?>
+                  <li class="h3"><?php echo $content['content']; ?></li>
+                <?php endforeach; ?>
+              </ul>
+            <?php endif; ?>
+          </div>
+        <?php endif; ?>
+        </section>
       <?php endif; ?>
     
 
