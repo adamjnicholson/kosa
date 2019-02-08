@@ -23,13 +23,14 @@ $sizes = get_field('sizes', 'options');
   <section id="features" class="page-section container md">
     <?php foreach ($sections as $key =>$section) :?>
       <?php 
+        $gap = $section['gap'] ? ' gap' : '';
         $lis = explode('<li>', $section['content']);
         unset($lis[0]);
 
-        $liCount = count($lis); // 23
-        $halfway = ceil($liCount / $numCols); // 12
+        $liCount = count($lis); 
+        $halfway = ceil($liCount / $numCols); 
       ?>
-      <div class="row">
+      <div class="row<?php echo $gap; ?>">
         <div class="col col-xs-12">
           <?php 
           if (!empty($section['image'])) {
@@ -60,7 +61,7 @@ $sizes = get_field('sizes', 'options');
         <?php echo genColours('kosa-colours col col-xs-12 col-md-6', '<h3>KOSA Rider Colours:</h3>'); ?>
         <?php if (!empty($sizes)) : ?>
           <div class="kosa-sizes col col-xs-12 col-md-6">
-            <h3>KOSA Rider Colours:</h3>
+            <h3>KOSA Rider Sizes:</h3>
             <p><?php echo $sizes; ?></p>
           </div>
         <?php endif; ?>

@@ -18,9 +18,9 @@ $sections = get_field('sections');
   <section id="page-sections" class="page-section container md">
     <?php 
     foreach ($sections as $section) : 
-      $gap = $section['gap'] ? 'gap' : '';
+      $gap = $section['gap'] ? ' gap' : '';
     ?>
-      <div class="row <?php echo $gap; ?>">
+      <div class="row<?php echo $gap; ?>">
         <div class="col col-xs-12 col-sm-4 col-md-3">
           <?php 
           if (!empty($section['image'])) {
