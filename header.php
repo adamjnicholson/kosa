@@ -7,8 +7,8 @@
  */
 $headerBanner = get_field('page_banner');
 $headerBanner = empty($headerBanner) ? get_field('site_banner', 'options') : $headerBanner;
-$bannerCutout = get_field('banner_cutout');
-$wearIt = get_field('wear_it');
+$bannerCutout = get_field('banner_cutout', 'options');
+$wearIt = get_field('wear_it', 'options');
 
 ?>
 <!DOCTYPE html>

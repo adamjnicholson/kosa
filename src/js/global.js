@@ -1,4 +1,14 @@
 {
+  const bannerInit = () => {
+    const $banner = jQuery('#page-banner .page-banner-inner');
+    if ($banner.children().length > 1) {
+      $banner.slick({
+        autoplay: true,
+        arrows: false,
+        dots: true
+      });
+    }
+  }
   const initMasonry = () => {
     const grid = document.querySelector('#attributes > .row');
     if (grid !== null) {
@@ -10,7 +20,7 @@
     }
   }
 
-  const slickInit = () => {
+  const sizesInit = () => {
     if (window.jQuery){
       const $slider = jQuery('.sizes-container');
       if ($slider.length) {
@@ -24,8 +34,9 @@
   }
     
   const init = () => {
+    bannerInit();
     initMasonry();
-    slickInit();
+    sizesInit();
   }
 
     init();

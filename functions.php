@@ -21,14 +21,10 @@
     // wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?key=your-key-here&v=3.exp&sensor=false', [], null, true);
 
     if (is_page(79)) {
-      wp_enqueue_script( 'masonry', get_stylesheet_directory_uri() . '/dist/js/masonry.pkgd.min.js', [], null, true);
+      wp_enqueue_script( 'fabric.js', get_stylesheet_directory_uri() . '/dist/js/fabric.min.js', ['jquery'], null, true);
     }
 
-    if (is_page(66)) {
-      wp_enqueue_script( 'slick', get_stylesheet_directory_uri() . '/dist/js/slick.min.js', ['jquery'], null, true);
-    }
-
-    wp_enqueue_script( 'kosa-js-footer', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', [], null, true);
+    wp_enqueue_script( 'kosa-js-footer', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', ['jquery'], null, true);
 
     $localize = [
       'prevArrow' => genSvg('icon-arrow-left', ['absolute-center']),

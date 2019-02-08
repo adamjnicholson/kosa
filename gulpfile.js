@@ -41,16 +41,17 @@ function reload(done) {
 
 gulp.task('sass', () => {
   return gulp.src('./src/sass/**/*.scss')
-    .pipe(plumber({errorHandler: onError}))
-    .pipe(sourcemaps.init())
-      .pipe(sass({outputStyle: 'compressed'}))
-      .pipe(autoprefixer('last 2 version'))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('./dist/css'))
+  .pipe(plumber({errorHandler: onError}))
+  .pipe(sourcemaps.init())
+    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(autoprefixer('last 2 version'))
+  .pipe(sourcemaps.write('./'))
+  .pipe(gulp.dest('./dist/css'))
 });
 
 gulp.task('js', () => {
   return gulp.src([
+    './src/js/slick.min.js',
     './src/js/menu.js',
     './src/js/global.js'
   ])
@@ -58,19 +59,25 @@ gulp.task('js', () => {
   .pipe(jshint())
   .pipe(jshint.reporter('default'))
   .pipe(sourcemaps.init())
-     .pipe(concat('scripts.js'))
-     .pipe(rename({suffix: '.min'}))
-     .pipe(uglify())
-     .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+    .pipe(concat('scripts.js'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
    .pipe(sourcemaps.write('./'))
    .pipe(gulp.dest('./dist/js'))
 });
 
-gulp.task('js-single', () => {
+gulp.task('js-fabric', () => {
   return gulp.src([
     './src/js/masonry.pkgd.min.js',
-    './src/js/slick.min.js'
+    './src/js/lightbox.min.js'
   ])
+  .pipe(jshint.reporter('default'))
+  .pipe(sourcemaps.init())
+    .pipe(concat('fabric.js'))
+    .pipe(rename({suffix: '.min'}))
+    .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+  .pipe(sourcemaps.write('./'))
   .pipe(gulp.dest('./dist/js'))
 });
 
@@ -87,10 +94,10 @@ gulp.task('watch', function(){
     proxy: devURL
   })
   gulp.watch('./src/sass/**/*.scss', gulp.series(['sass', reload]));
-  gulp.watch('./src/js/*.js', gulp.series(['js', 'js-single', reload]));
+  gulp.watch('./src/js/*.js', gulp.series(['js', 'js-fabric', reload]));
   gulp.watch('./src/images/src/*', gulp.series(['images', reload]));
 });
 
 
-gulp.task('default', gulp.series(['sass', 'js', 'js-single', 'images', 'watch']));
+gulp.task('default', gulp.series(['sass', 'js', 'js-fabric', 'images', 'watch']));
 
