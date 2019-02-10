@@ -1,4 +1,4 @@
-#page-sections,
+.page-section,
 #contact {
   .row {
     + .row{
@@ -105,7 +105,7 @@
   }
 }
 @media (min-width: 550px) {
-  #page-sections {
+  .page-section {
     .row {
       .col:first-child .image-container {
         text-align: left;
