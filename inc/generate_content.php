@@ -17,10 +17,13 @@
       case 'small':
         $logo = get_field('small_logo', 'options');
         break;
+      case 'footer' :
+        $logo = get_field('footer_logo', 'options');
+        break;
       default:
         $logo = get_field('logo', 'options');
     }
-    $logo = empty($logo) ? get_bloginfo('name') : genImageTag($logo, 'full', $retina);
+    $logo = empty($logo) && $logoType !== 'footer' ? get_bloginfo('name') : genImageTag($logo, 'full', $retina);
 
     $logo = '<a class="no-hover" href="' . get_site_url() . '">' . $logo  . '</a>';
     if (is_front_page() && $position === 'header') {

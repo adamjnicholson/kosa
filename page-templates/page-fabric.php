@@ -19,11 +19,11 @@ $attributes = get_field('attributes');
     <div class="row">
       <?php 
       foreach ($attributes as $key => $attr) :
-        $heading = !empty($attr['heading']) ? '<h3>' . $attr['heading'] . '</h3>' : '';
+        $heading = !empty($attr['heading']) ? '<h2>' . $attr['heading'] . '</h2>' : '';
         $subheading = !empty($attr['sub_heading']) ? '<p class="subheading">' . $attr['sub_heading'] . '</p>' : '';
         $description = !empty($attr['description']) ? '<div class="description">' . $attr['description'] . '</div>' : '';
       ?>
-        <div class="attribute col col-xs-12 col-md-6 col-lg-4">
+        <div class="attribute col col-xs-12 col-md-6">
           <?php 
             echo $heading;
             echo $subheading;

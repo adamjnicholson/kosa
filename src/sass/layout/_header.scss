@@ -12,9 +12,12 @@
   border-bottom: 1px solid $light-gray;
   z-index: 950;
   .site-logo {
+    a {
+      position: absolute;
+      top: 10px;
+    }
     img{
-      max-height: 45px;
-      width: auto;
+      max-width: 100px;
     }
   } 
 }

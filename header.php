@@ -15,7 +15,7 @@ $wearIt = get_field('wear_it', 'options');
 <html>
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
 
   </head>
@@ -23,7 +23,7 @@ $wearIt = get_field('wear_it', 'options');
 
   <body <?php body_class(); ?>>
     <div class="fixed-header">
-      <?php genSiteLogo('small', false, ''); ?>
+      <?php genSiteLogo('header', false, ''); ?>
       <div id="hamburger">
         <?php echo genSvg('icon-bars', ['absolute-center']); ?>
         <?php echo genSvg('icon-close', ['absolute-center']); ?>
@@ -46,11 +46,11 @@ $wearIt = get_field('wear_it', 'options');
           <div class="page-banner-inner">
           <?php 
             foreach ($headerBanner as $banner) {
-              echo genImageTag($banner);
+              echo genImageTag($banner, 'banner');
             }
           ?>
           </div>
-          <?php if (!empty($bannerCutout)) : ?>
+          <?php if (is_front_page() && !empty($bannerCutout)) : ?>
           <div id="banner-cutout">
             <div class="cutout">
               <?php echo $bannerCutout; ?>

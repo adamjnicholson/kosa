@@ -20,6 +20,7 @@ footer {
   }
   .site-logo {
     text-align: center;
+    margin-bottom: 1rem;
   }
   #footer-menu {
     li {
@@ -46,7 +47,7 @@ footer {
 .bottom-bar{
   background-color: $dark-gray;
   color: $white;
-  padding: .75rem 1rem;
+  padding: .75rem 1rem 0 1rem;
   font-size: .9rem;
   .container {
     display: flex;
@@ -60,6 +61,9 @@ footer {
     font-family: $heading-font;
     color: $white;
     font-size: 1rem;
+  }
+  p {
+    margin-bottom: 0;
   }
 }
 
@@ -76,16 +80,11 @@ footer {
   }
   .bottom-bar {
     .container {
-      flex-direction: row;
-      > * + * {
-        margin-top: 0;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      > *{
+        margin: 0 1rem .75rem 0;
       }
-    }
-    .copyright {
-      margin: 0 1rem;
-    }
-    a {
-      margin-left: auto;
     }
   }
 }
@@ -113,6 +112,19 @@ footer {
     }
     .contact-details {
       text-align: left;
+    }
+  }
+  .bottom-bar {
+    padding-bottom: .75rem;
+    .container {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      > * {
+        margin: 0 1rem 0 0;
+      }
+      a {
+        margin-left: auto;
+      }
     }
   }
 }

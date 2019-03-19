@@ -68,14 +68,6 @@ img {
   }
 }
 
-.small {
-  font-size: .875rem;
-}
-
-.caps {
-  text-transform: uppercase;
-}
-
 .circle {
   position: relative;
   display: inline-flex;
@@ -87,6 +79,26 @@ img {
   border-radius: 50%;
   color: $white;
   text-align: center;
+}
+
+.fancy {
+  font-family: 'Playfair Display', serif !important;
+}
+
+.alternate {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.small {
+  font-size: .875em;
+}
+
+.large {
+  font-size: 1.1em;
+}
+
+.caps {
+  text-transform: uppercase;
 }
 
 .kosa-colours {

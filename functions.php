@@ -12,6 +12,7 @@
       'footer' => 'Footer Menu',
     ]);
 
+    add_image_size( 'banner', 1920, 448 );
   }
   add_action( 'after_setup_theme', 'kosa_setup' );
 
@@ -56,6 +57,26 @@
         'inline' => 'span',
         'classes' => 'circle'
       ],
+      [
+        'title' => 'Fancy Text',
+        'inline' => 'span',
+        'classes' => 'fancy'
+      ],
+      [
+        'title' => 'Alternate Text',
+        'inline' => 'span',
+        'classes' => 'alternate'
+      ],
+      [
+        'title' => 'Small Text',
+        'inline' => 'span',
+        'classes' => 'small'
+      ],
+      [
+        'title' => 'Large Text',
+        'inline' => 'span',
+        'classes' => 'big'
+      ]
     ];
     // Insert the array, JSON ENCODED, into 'style_formats'
     $init_array['style_formats'] = json_encode( $style_formats );
